@@ -1,7 +1,7 @@
 export default function LoginPage() {
   return (
     <section class="flex h-full items-center justify-center bg-rosy">
-      <div class="mx-14 mt-10 md:mx-32 w-3/4 md:w-2/4 lg:w-1/4">
+      <div class="mx-14 md:mx-32 w-3/4 md:w-2/4 lg:w-1/4">
         <h1 class="mb-8 text-center text-rose text-2xl">Iniciar sesión</h1>
         <form>
           <div class="mb-4">
@@ -43,7 +43,7 @@ export default function LoginPage() {
                 href=""
                 class="text-pink font-normal hover:text-dark-pink ml-1"
               >
-                Regístrate
+                Crear cuenta
               </a>
             </p>
           </div>
