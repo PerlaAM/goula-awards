@@ -143,7 +143,7 @@ export default function LoginPage() {
               </p>
             )}
           </div>
-          <div className="columns-2">
+          <div className="mb-4 columns-2">
             <label
               htmlFor="email"
               className="mb-1 block text-sm font-normal text-rose"
@@ -194,6 +194,72 @@ export default function LoginPage() {
             {errors.password && (
               <p className="text-xs pt-2 pb-1 text-pink">
                 {errors.password.message}
+              </p>
+            )}
+          </div>
+          <p className="text-black mb-1">Nivel de ventas</p>
+
+          <div className="columns-3">
+            <label
+              htmlFor="firstYear"
+              className="mb-1 block text-sm font-normal text-rose"
+            >
+              Año 1*
+            </label>
+            <input
+              id="firstYear"
+              type="text"
+              name="firstYear"
+              className="block w-full rounded-lg bg-white py-2 px-3 text-black focus:outline-none focus:border-rose focus:ring-rose focus:ring-2 text-sm"
+              {...register("firstYear", {
+                required: "Este campo es requerido",
+              })}
+            />
+            {errors.firstYear && (
+              <p className="text-xs pt-2 pb-1 text-pink break-after-column">
+                {errors.firstYear.message}
+              </p>
+            )}
+
+            <label
+              htmlFor="secondYear"
+              className="mb-1 block text-sm font-normal text-rose break-before-column"
+            >
+              Año 2*
+            </label>
+            <input
+              id="secondYear"
+              type="text"
+              name="secondYear"
+              className="block w-full rounded-lg bg-white py-2 px-3 text-black focus:outline-none focus:border-rose focus:ring-rose focus:ring-2 text-sm"
+              {...register("secondYear", {
+                required: "Este campo es requerido",
+              })}
+            />
+            {errors.secondYear && (
+              <p className="text-xs pt-2 pb-1 text-pink break-after-column">
+                {errors.secondYear.message}
+              </p>
+            )}
+
+            <label
+              htmlFor="thirdYear"
+              className="mb-1 block text-sm font-normal text-rose break-before-column"
+            >
+              Año 3*
+            </label>
+            <input
+              id="thirdYear"
+              type="text"
+              name="thirdYear"
+              className="block w-full rounded-lg bg-white py-2 px-3 text-black focus:outline-none focus:border-rose focus:ring-rose focus:ring-2 text-sm"
+              {...register("thirdYear", {
+                required: "Este campo es requerido",
+              })}
+            />
+            {errors.thirdYear && (
+              <p className="text-xs pt-2 pb-1 text-pink break-after-column">
+                {errors.thirdYear.message}
               </p>
             )}
           </div>
