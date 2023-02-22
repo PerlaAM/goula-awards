@@ -1,9 +1,15 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
+import { TailSpin } from "svg-loaders-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const router = useRouter();
+
   const {
     register,
     formState: { errors },
@@ -12,18 +18,69 @@ export default function LoginPage() {
     mode: "onChange",
   });
 
-  const onSubmit = (data) => {
-    debugger;
-    console.log("hola");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const url =
+    "https://tusitioweb.dev/awards/wp-json/wp/v2/registro/participante";
+
+  const formOnSubmit = (userInformation) => {
+    setIsLoading(true);
+
+    let newUserInformation = {
+      email: userInformation.email,
+      nombres: userInformation.name,
+      apellidos: userInformation.lastName,
+      celular: userInformation.mobile,
+      password: userInformation.password,
+      numero_de_empleados: "Microempresa",
+      forma_enterado: "otro",
+      otro_forma_enterado: "N/A",
+      cargo: "Gerente",
+      nombre_empresa: "Mi negocio",
+      fecha_origen: "25/04/1998",
+      hombres: 2,
+      mujeres: 3,
+      no_binario: 1,
+      geografia_intervencion: "México",
+      razon_social: "Mi empresa S.A. 2",
+      url_empresa: "'https://google.com'",
+      cp: "55620",
+      calle_numero: "14",
+      colonia: "San Pedro",
+      delegacion_municipio: "Ecatepec",
+      ciudad: "Ecatepec",
+      pais: "México",
+      vision: "La vision",
+      mision: "La mision",
+      clientes: "Los clientes",
+      usuarios: "Los usuarios",
+      aliados: "Los aliados",
+      grupos_de_interes: "Los grupos de interés",
+      competencia: "La competencia",
+      participado_en_programas_de_aceleracion: "si",
+      cual_programa: "El programa",
+      nivel_de_ventas: {
+        anio_1: userInformation.firstYear,
+        anio_2: userInformation.secondYear,
+        anio_3: userInformation.thirdYear,
+      },
+    };
+
+    doRegistrationRequest(newUserInformation);
   };
-  // console.log(errors);
+
+  const doRegistrationRequest = (newUserInformation) => {
+    axios.post(url, newUserInformation).then((response) => {
+      router.push("/");
+    });
+  };
 
   return (
     <section className="flex h-full justify-center items-center  bg-rosy">
       <div className="mx-14 md:mx-32 w-3/4 md:w-2/4 lg:w-1/3">
         <h1 className="mb-8 text-center text-rose text-2xl">Crear cuenta</h1>
 
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(formOnSubmit)}>
           <div className="mb-4 columns-2">
             <label
               htmlFor="name"
@@ -81,9 +138,13 @@ export default function LoginPage() {
               className="block w-full rounded-lg bg-white py-2 px-3 text-black focus:outline-none focus:border-rose focus:ring-rose focus:ring-2 text-sm"
               {...register("phone", {
                 required: "Este campo es requerido",
+                minLength: {
+                  value: 10,
+                  message: "Debe ser de 10 dígitos",
+                },
                 maxLength: {
                   value: 10,
-                  message: "El teléfono debe ser de 10 dígitos",
+                  message: "Debe ser de 10 dígitos",
                 },
               })}
             />
@@ -105,6 +166,10 @@ export default function LoginPage() {
               className="block w-full rounded-lg bg-white py-2 px-3 text-black focus:outline-none focus:border-rose focus:ring-rose focus:ring-2 text-sm"
               {...register("mobile", {
                 required: "Este campo es requerido",
+                minLength: {
+                  value: 10,
+                  message: "Debe ser de 10 dígitos",
+                },
                 maxLength: {
                   value: 10,
                   message: "Debe ser de 10 dígitos",
@@ -265,17 +330,23 @@ export default function LoginPage() {
           </div>
 
           <div className="columns-2 flex">
-            <button
-              type="submit"
-              className="mr-2 rounded-lg py-2 px-3 text-sm font-light transition-colors border border-yellow border-2  text-yellow mt-8 w-full text-white hover:bg-beige"
+            <Link
+              href="/"
+              className={`mr-2 rounded-lg py-2 px-3 text-sm font-light transition-colors border border-yellow border-2 text-yellow mt-8 w-full text-white hover:bg-beige text-center ${
+                isLoading ? "hidden" : ""
+              }`}
             >
               Cancelar
-            </button>
+            </Link>
 
             <button
               type="submit"
-              className="ml-2 rounded-lg py-2 px-3 text-sm font-light transition-colors bg-rose text-yellow mt-8 w-full hover:bg-dark-rose"
+              className="flex items-center justify-center ml-2 rounded-lg py-2 px-3 text-sm font-light transition-colors bg-rose text-yellow mt-8 w-full hover:bg-dark-rose"
+              disabled={isLoading ? "disabled" : ""}
             >
+              <TailSpin
+                className={`w-5 h-5 mr-2 ${!isLoading ? "hidden" : ""}`}
+              />
               Continuar
             </button>
           </div>
