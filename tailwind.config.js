@@ -15,7 +15,11 @@ module.exports = {
       'dark-rose': '#8A4253',
       'dark-pink': '#691D2E',
       'beige': '#D9C5B6',
-      'white': '#F8F7F2'
+      'white': '#F8F7F2',
+      'sunset': '#FCD7A1',
+      'orange': '#BA5950',
+      'dark-green': '#657760',
+      'green': '#c2eaba'
     },
     extend: {},
   },

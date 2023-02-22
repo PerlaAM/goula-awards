@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { TailSpin } from "svg-loaders-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -71,7 +70,7 @@ export default function LoginPage() {
 
   const doRegistrationRequest = (newUserInformation) => {
     axios.post(url, newUserInformation).then((response) => {
-      router.push("/");
+      router.push(`/?status=${"registered"}`);
     });
   };
 
@@ -92,6 +91,7 @@ export default function LoginPage() {
               id="name"
               type="text"
               name="name"
+              autoComplete="off"
               className="block w-full rounded-lg bg-white py-2 px-3 text-black focus:outline-none focus:border-rose focus:ring-rose focus:ring-2 text-sm"
               {...register("name", {
                 required: "Este campo es requerido",
@@ -113,6 +113,7 @@ export default function LoginPage() {
               id="lastName"
               type="text"
               name="lastName"
+              autoComplete="off"
               className="block w-full rounded-lg bg-white py-2 px-3 text-black focus:outline-none focus:border-rose focus:ring-rose focus:ring-2 text-sm"
               {...register("lastName", {
                 required: "Este campo es requerido",
@@ -135,6 +136,7 @@ export default function LoginPage() {
               id="phone"
               type="tel"
               name="phone"
+              autoComplete="off"
               className="block w-full rounded-lg bg-white py-2 px-3 text-black focus:outline-none focus:border-rose focus:ring-rose focus:ring-2 text-sm"
               {...register("phone", {
                 required: "Este campo es requerido",
@@ -163,6 +165,7 @@ export default function LoginPage() {
               id="mobile"
               type="tel"
               name="mobile"
+              autoComplete="off"
               className="block w-full rounded-lg bg-white py-2 px-3 text-black focus:outline-none focus:border-rose focus:ring-rose focus:ring-2 text-sm"
               {...register("mobile", {
                 required: "Este campo es requerido",
@@ -193,6 +196,7 @@ export default function LoginPage() {
               id="zipCode"
               type="number"
               name="zipCode"
+              autoComplete="off"
               className="block w-full rounded-lg bg-white py-2 px-3 text-black focus:outline-none focus:border-rose focus:ring-rose focus:ring-2 text-sm"
               {...register("zipCode", {
                 required: "Este campo es requerido",
@@ -219,6 +223,7 @@ export default function LoginPage() {
               id="email"
               type="text"
               name="email"
+              autoComplete="off"
               className="block w-full rounded-lg bg-white py-2 px-3 text-black focus:outline-none focus:border-rose focus:ring-rose focus:ring-2 text-sm"
               {...register("email", {
                 required: "Este campo es requerido",
@@ -341,11 +346,15 @@ export default function LoginPage() {
 
             <button
               type="submit"
-              className="flex items-center justify-center ml-2 rounded-lg py-2 px-3 text-sm font-light transition-colors bg-rose text-yellow mt-8 w-full hover:bg-dark-rose"
+              className={`flex items-center justify-center ml-2 rounded-lg py-2 px-3 text-sm font-light transition-colors bg-rose text-yellow mt-8 w-full ${
+                !isLoading ? "hover:bg-dark-rose" : "opacity-60"
+              }`}
               disabled={isLoading ? "disabled" : ""}
             >
-              <TailSpin
-                className={`w-5 h-5 mr-2 ${!isLoading ? "hidden" : ""}`}
+              <img
+                src="my-loader.svg"
+                alt="Cargando..."
+                className={`mr-2 ${!isLoading ? "hidden" : ""}`}
               />
               Continuar
             </button>
