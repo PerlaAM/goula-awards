@@ -179,8 +179,23 @@ export default function LoginPage() {
               id="password"
               type="password"
               name="password"
+              maxLength="8"
               className="block w-full rounded-lg bg-white py-2 px-3 text-black focus:outline-none focus:border-rose focus:ring-rose focus:ring-2 text-sm"
+              {...register("password", {
+                required: "Este campo es requerido",
+                pattern: {
+                  value:
+                    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@$!%*?&]{8}$/,
+                  message:
+                    "La contraseña debe tener al menos una minúscula, una mayúscula, un número",
+                },
+              })}
             />
+            {errors.password && (
+              <p className="text-xs pt-2 pb-1 text-pink">
+                {errors.password.message}
+              </p>
+            )}
           </div>
 
           <div className="columns-2 flex">
