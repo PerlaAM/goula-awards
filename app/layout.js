@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
                 ¿QUÉ SON?
               </Link>
               <Link
-                href="/"
+                href="/category"
                 className="text-pink font-light hover:text-dark-pink lg:mx-3"
               >
                 CATEGORÍAS
@@ -56,7 +56,7 @@ export default function RootLayout({ children }) {
                 href="/"
                 className="lg:ml-3 rounded-lg py-2 px-3 text-center text-sm font-light transition-colors bg-rose text-yellow hover:bg-dark-rose"
               >
-                REGÍSTRATE
+                INICIAR SESIÓN
               </Link>
             </div>
           </div>

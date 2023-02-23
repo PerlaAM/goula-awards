@@ -337,7 +337,7 @@ export default function RegisterPage() {
           <div className="columns-2 flex">
             <Link
               href="/"
-              className={`mr-2 rounded-lg py-2 px-3 text-sm font-light transition-colors border border-yellow border-2 text-yellow mt-8 w-full text-white hover:bg-beige text-center ${
+              className={`mr-2 rounded-lg py-2 px-3 text-sm font-light transition-colors border-yellow border-2 text-yellow mt-8 w-full hover:bg-beige text-center ${
                 isLoading ? "hidden" : ""
               }`}
             >

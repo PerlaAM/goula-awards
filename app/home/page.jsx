@@ -6,7 +6,7 @@ const fetchContents = () => {
     });
 };
 
-export default async function HomePage({ params }) {
+export default async function HomePage({}) {
   const contents = await fetchContents();
 
   return (
@@ -33,13 +33,13 @@ export default async function HomePage({ params }) {
               <h1 className="mb-8 font-display text-4xl font-light tracking-tighter text-rose sm:text-4xl">
                 {contents.acf.fechas_importantes.subtitulo}
               </h1>
-              {contents.acf.fechas_importantes.fechas.map((post) => (
+              {contents.acf.fechas_importantes.fechas.map((data) => (
                 <div className="mb-9">
                   <p className="text-xl font-semibold text-rose">
-                    {post.fecha.split(":")[0]}
+                    {data.fecha.split(":")[0]}
                   </p>
                   <p className="uppercase text-3xl leading-none text-dark-green">
-                    {post.fecha.split(":")[1]}
+                    {data.fecha.split(":")[1]}
                   </p>
                 </div>
               ))}
