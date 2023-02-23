@@ -19,7 +19,8 @@ module.exports = {
       'sunset': '#FCD7A1',
       'orange': '#BA5950',
       'dark-green': '#657760',
-      'green': '#c2eaba'
+      'green': '#C2EABA',
+      'light-pink': '#F1E4E6'
     },
     extend: {},
   },
