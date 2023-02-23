@@ -26,6 +26,7 @@ export default function RegisterPage() {
 
   const formOnSubmit = (userInformation) => {
     setIsLoading(true);
+    setIsHideError(true);
 
     let newUserInformation = {
       email: userInformation.email,
