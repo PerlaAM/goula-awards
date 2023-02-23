@@ -5,9 +5,13 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import ErrorAlert from "../components/errorAlert";
 
 export default function RegisterPage() {
   const router = useRouter();
+  const [isHideError, setIsHideError] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [messageError, setMessage] = useState("");
 
   const {
     register,
@@ -16,8 +20,6 @@ export default function RegisterPage() {
   } = useForm({
     mode: "onChange",
   });
-
-  const [isLoading, setIsLoading] = useState(false);
 
   const url =
     "https://tusitioweb.dev/awards/wp-json/wp/v2/registro/participante";
@@ -69,15 +71,33 @@ export default function RegisterPage() {
   };
 
   const doRegistrationRequest = (newUserInformation) => {
-    axios.post(url, newUserInformation).then((response) => {
-      router.push(`/?status=${"registered"}`);
-    });
+    axios
+      .post(url, newUserInformation)
+      .then((response) => {
+        router.push(`/login?status=${"registered"}`);
+      })
+      .catch(function (error) {
+        setMessage(
+          (error.response.data = !null
+            ? error.response.data.message
+            : error.response.data)
+        );
+        setIsLoading(false);
+        setIsHideError(false);
+      });
   };
 
   return (
-    <section className="flex h-full justify-center items-center bg-rosy">
+    <section className="py-16 flex h-full justify-center items-center bg-rosy overflow-y-scroll">
       <div className="mx-14 md:mx-32 w-3/4 md:w-2/4 lg:w-1/3">
-        <h1 className="mb-8 text-center text-rose text-2xl">Crear cuenta</h1>
+        <div className={` ${!isHideError ? "pt-24" : ""}`}>
+          <ErrorAlert
+            isHide={isHideError}
+            title={"Ha ocurrido un error"}
+            description={messageError}
+          ></ErrorAlert>
+        </div>
+        <h1 className="mb-8 text-center text-rose text-2xl">Registro</h1>
 
         <form onSubmit={handleSubmit(formOnSubmit)}>
           <div className="mb-4 columns-2">
