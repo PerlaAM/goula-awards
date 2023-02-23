@@ -29,7 +29,6 @@ export default async function CategoryPage({}) {
                 <div className="sm:mr-6 ">
                   <img
                     src={category.imagen}
-                    alt=""
                     className="mx-auto w-28 sm:w-52 sm:mx-0"
                   />
                 </div>

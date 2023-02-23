@@ -49,7 +49,8 @@ export default function LoginPage() {
   const doLoginRequest = (newLoginInformation) => {
     axios
       .post(url, newLoginInformation)
-      .then(() => {
+      .then((response) => {
+        saveData(response.data.data.email);
         router.push("/");
       })
       .catch(function (error) {
@@ -63,6 +64,10 @@ export default function LoginPage() {
       return "Iniciando sesión";
     }
     return "Iniciar sesión";
+  }
+
+  function saveData(email) {
+    sessionStorage.setItem("emailGoula", email);
   }
 
   return (
