@@ -6,7 +6,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const router = useRouter();
 
   const {
@@ -75,7 +75,7 @@ export default function LoginPage() {
   };
 
   return (
-    <section className="flex h-full justify-center items-center  bg-rosy">
+    <section className="flex h-full justify-center items-center bg-rosy">
       <div className="mx-14 md:mx-32 w-3/4 md:w-2/4 lg:w-1/3">
         <h1 className="mb-8 text-center text-rose text-2xl">Crear cuenta</h1>
 
