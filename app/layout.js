@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
           >
             <div className='lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto'>
               <Link
-                href="/home"
+                href="/"
                 className="text-pink font-light hover:text-dark-pink lg:mr-3"
               >
                 ¿QUÉ SON?
@@ -53,7 +53,7 @@ export default function RootLayout({ children }) {
                 JUECES
               </Link>
               <Link
-                href="/"
+                href="/login"
                 className="lg:ml-3 rounded-lg py-2 px-3 text-center text-sm font-light transition-colors bg-rose text-yellow hover:bg-dark-rose"
               >
                 INICIAR SESIÓN
