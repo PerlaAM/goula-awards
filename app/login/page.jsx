@@ -50,7 +50,7 @@ export default function LoginPage() {
     axios
       .post(url, newLoginInformation)
       .then(() => {
-        router.push("/home");
+        router.push("/");
       })
       .catch(function (error) {
         setIsLoading(false);
@@ -158,12 +158,12 @@ export default function LoginPage() {
 
           <div className="mt-4">
             <p className="text-black font-light text-sm text-center">
-              ¿No tienes una cuenta?
+              ¿Quieres participar?
               <Link
                 href="/register"
                 className="text-pink font-normal hover:text-dark-pink ml-1"
               >
-                Crear cuenta
+                Regístrate aquí
               </Link>
             </p>
           </div>

@@ -36,19 +36,19 @@ export default function RootLayout({ children }) {
             <div className='lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto'>
               <Link
                 href="/"
-                className="text-pink font-light hover:text-dark-pink lg:mr-3"
+                className="text-pink font-light hover:text-dark-pink lg:mr-3 mb-6 sm:m-0"
               >
                 ¿QUÉ SON?
               </Link>
               <Link
                 href="/category"
-                className="text-pink font-light hover:text-dark-pink lg:mx-3"
+                className="text-pink font-light hover:text-dark-pink lg:mx-3 mb-6 sm:m-0"
               >
                 CATEGORÍAS
               </Link>
               <Link
-                href="/"
-                className="text-pink font-light hover:text-dark-pink lg:mx-3"
+                href="/judge"
+                className="text-pink font-light hover:text-dark-pink lg:mx-3 mb-6 sm:m-0"
               >
                 JUECES
               </Link>
